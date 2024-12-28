@@ -10,22 +10,26 @@ fn magnitude(v: &[f64; 3]) -> f64 {
     result
 }
 
-
 // Normalize a vector by calculating its magnitude and dividing all of its
 // coordinates by that magnitude.
 
-fn normalize(v: &[f64; 3]) {
-    let mag = magnitude(v);
-    
+fn normalize(v: [f64; 3]) {
+    let mag = magnitude(&v);
+    for comp in v {
+        comp = comp / mag;
+    }
 }
 
 // Use the following `main` to test your work.
 
 fn main() {
-    println!("Magnitude of a unit vector: {}", magnitude(&[0.0, 1.0, 0.0]));
+    println!(
+        "Magnitude of a unit vector: {}",
+        magnitude(&[0.0, 1.0, 0.0])
+    );
 
     let mut v = [1.0, 2.0, 9.0];
     println!("Magnitude of {v:?}: {}", magnitude(&v));
-    //normalize(&mut v);
+    normalize(&mut v);
     println!("Magnitude of {v:?} after normalization: {}", magnitude(&v));
 }
