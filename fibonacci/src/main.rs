@@ -1,4 +1,4 @@
-fn fib(n: u32) -> u32 {
+fn fib(n: u64) -> u64 {
     if n < 2 {
         // The base case.
         n
@@ -9,6 +9,6 @@ fn fib(n: u32) -> u32 {
 }
 
 fn main() {
-    let n = 20;
+    let n = 50;
     println!("fib({n}) = {}", fib(n));
 }
