@@ -3,20 +3,20 @@
 // root, like `v.sqrt()`.
 
 fn magnitude(v: &[f64; 3]) -> f64 {
-    let mut result = v[0].abs().powf(2f64);
-    result += v[1].abs().powf(2f64);
-    result += v[2].abs().powf(2f64);
-    result = result.sqrt();
-    result
+    let mut result:f64 = 0f64;
+    for c in v {
+        result += c * c;
+    }
+    result.sqrt()
 }
 
 // Normalize a vector by calculating its magnitude and dividing all of its
 // coordinates by that magnitude.
 
-fn normalize(v: [f64; 3]) {
+fn normalize(v: &mut [f64; 3]) {
     let mag = magnitude(&v);
-    for comp in v {
-        comp = comp / mag;
+    for c in v {
+        *c /= mag;
     }
 }
 
